@@ -1,3 +1,7 @@
+# api keys
+.env
+public/js/secrets.js
+
 # Logs
 logs
 *.log

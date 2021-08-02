@@ -1,6 +1,6 @@
-console.log('hi')
-const API_KEY = '';
-const SECRET = ''
+import {API_KEY, SECRET} from './secrets.js'
+
+console.log(API_KEY, SECRET)
 
 const getAuthTokenAPI = () => {
   // figure out how to return the OAuth Token
