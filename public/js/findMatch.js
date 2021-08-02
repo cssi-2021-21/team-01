@@ -35,7 +35,7 @@ async function getData() {
           <div class="card">
               <div class="card-image">
                   <figure class="image">
-                  ${animal.primary_photo_cropped ? `<img src='${animal.primary_photo_cropped.large}'/>` : false} 
+                  ${animal.primary_photo_cropped ? `<img src='${animal.primary_photo_cropped.large}'/>` : 'No image available'} 
                   </figure>
               </div>
               <div class="card-content">
