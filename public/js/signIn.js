@@ -1,1 +1,5 @@
-console.log('test');
+const loginBtn = document.getElementById('loginBtn');
+
+const signIn = () => {
+    
+}
