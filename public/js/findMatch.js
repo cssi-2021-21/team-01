@@ -1,3 +1,4 @@
+console.log('hi')
 const API_KEY = '';
 const SECRET = ''
 
