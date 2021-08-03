@@ -52,10 +52,10 @@ async function getData() {
                 </div>
                   ${animal.tags ? animal.tags.map(tag => makeTag(tag)) : ''}
                 <div class="mt-4">
-                  <button class="button is-pulled-left danger">
+                  <button class="button is-pulled-left is-danger">
                     Left
                   </button>
-                  <button class="button is-pulled-right primary">
+                  <button class="button is-pulled-right is-info">
                     Right
                   </button>
                 </div>
