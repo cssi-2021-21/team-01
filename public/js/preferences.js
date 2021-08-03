@@ -1,18 +1,18 @@
-let googleUser;
+let googleUserId
 
-window.onload = () => {
-    firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-            console.log("Signed in as", user.displayName);
-            googleUser = user.uid;
-            firebase.database().ref(`/users/${googleUser}/preferences`).push({preference: null});
-        }
-        else {
-            alert("Not signed in!");
-            window.location = "signIn.html"
-        }
-    })
-}
+window.onload = (event) => {
+  // Use this to retain user state between html pages.
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      console.log('Logged in as: ' + user.displayName);
+      googleUserId = user.uid;
+    } else {
+      // If not logged in, navigate back to login page.
+      window.location = 'index.html';
+    };
+  });
+};
+  
 
 const dogBtn = document.querySelector('button[value="dog"]')
 const catBtn = document.querySelector('button[value="cat"]')
