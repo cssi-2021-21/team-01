@@ -1,4 +1,4 @@
-let googleUserId
+let googleUserId;
 
 window.onload = (event) => {
   // Use this to retain user state between html pages.
@@ -6,6 +6,7 @@ window.onload = (event) => {
     if (user) {
       console.log('Logged in as:', user.displayName);
       googleUserId = user.uid;
+      firebase.database().ref(`/users/${googleUserId}/preferences`).push({preference: null});
     } else {
       // If not logged in, navigate back to login page.
       window.location = 'index.html';
@@ -19,12 +20,12 @@ const catBtn = document.querySelector('button[value="cat"]')
 
 dogBtn.addEventListener("click", () => {
     console.log("Dog Selected");
-    firebase.database().ref(`/users/${googleUser}/preferences`).update({preference: 'dog'});
+    firebase.database().ref(`/users/${googleUserId}/preferences`).update({preference: 'dog'});
     window.location = "explore.html";
 });
 
 catBtn.addEventListener("click", () => {
     console.log("Cat Selected");
-    firebase.database().ref(`/users/${googleUser}/preferences`).update({preference: 'cat'});
+    firebase.database().ref(`/users/${googleUserId}/preferences`).update({preference: 'cat'});
     window.location = "explore.html";
 });
