@@ -9,7 +9,7 @@ window.onload = () => {
         }
         else {
             alert("Not signed in!");
-            window.location = "signIn.html"
+            window.location = "index.html"
         }
     })
 }
