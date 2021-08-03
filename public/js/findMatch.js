@@ -54,8 +54,7 @@ const makeTag = (tag) => {
 let curAnimalIndex = 0;  
 getData()
     .then((animalData) => {
-        updateCurAnimal(animalData[0], animalData);
-        console.log("promise working", animalData)      
+        updateCurAnimal(animalData[0], animalData);   
     })
 
 const updateCurAnimal = (animal, animalData) => {
@@ -102,7 +101,6 @@ const updateCurAnimal = (animal, animalData) => {
 
     const swipeLeftBtn = document.querySelector('button.button.is-pulled-left');
     swipeLeftBtn.addEventListener("click", () => {
-        console.log("clicked left");
         updateCurAnimal(animalData[++curAnimalIndex], animalData);
     });
 }    
