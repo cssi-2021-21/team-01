@@ -15,6 +15,9 @@ const signIn = () => {
         // The signed-in user info.
         var user = result.user;
         window.location = 'preferences.html';
+
+        // Create database save for user
+
     }).catch((error) => {
     // Handle Errors here.
     var errorCode = error.code;
@@ -29,6 +32,6 @@ const signIn = () => {
       email,
       credential
     };
-    alert(err);
+    console.log(err);
   });
 }
