@@ -20,11 +20,11 @@ const catBtn = document.querySelector('button[value="cat"]')
 dogBtn.addEventListener("click", () => {
     console.log("Dog Selected");
     firebase.database().ref(`/users/${googleUser}/preferences`).update({preference: 'dog'});
-    window.location = "findMatch.html";
-})
+    window.location = "explore.html";
+});
 
 catBtn.addEventListener("click", () => {
     console.log("Cat Selected");
     firebase.database().ref(`/users/${googleUser}/preferences`).update({preference: 'cat'});
-    window.location = "findMatch.html";
-})
+    window.location = "explore.html";
+});
