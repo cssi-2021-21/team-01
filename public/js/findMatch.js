@@ -1,12 +1,12 @@
 import {API_KEY, SECRET} from './secrets.js'
 
-let googleUserId
+let googleUserId;
 
 window.onload = (event) => {
   // Use this to retain user state between html pages.
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-      console.log('Logged in as: ' + user.displayName);
+      console.log('Logged in as:', user.displayName);
       googleUserId = user.uid;
     } else {
       // If not logged in, navigate back to login page.
@@ -41,8 +41,24 @@ async function getData() {
 
   try {
     const {data} = await axios.get('https://api.petfinder.com/v2/animals?type=dog', config)
-    const animal = data.animals[0]
-    console.log(animal);
+    return data.animals;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+const makeTag = (tag) => {
+  return `<span class="tag is-success is-light">${tag}</span>`
+}
+
+let curAnimalIndex = 0;  
+getData()
+    .then((animalData) => {
+        updateCurAnimal(animalData[0], animalData);
+        console.log("promise working", animalData)      
+    })
+
+const updateCurAnimal = (animal, animalData) => {
     content.innerHTML = `
       <div class="columns is-centered">
         <div class="column is-one-third">
@@ -76,18 +92,19 @@ async function getData() {
             </div>
           </div>
         </div>
-      </div>`
-  } catch (err) {
-    console.log(err);
-  }
-}
+      </div>`;
 
-const makeTag = (tag) => {
-  return `<span class="tag is-success is-light">${tag}</span>`
-}
+    const swipeRightBtn = document.querySelector('button.button.is-pulled-right');
+    swipeRightBtn.addEventListener("click", () => {
+        firebase.database().ref(`users/${googleUserId}/matches`).push(animalData[curAnimalIndex].id);
+        updateCurAnimal(animalData[++curAnimalIndex], animalData);
+    });
 
-
-getData()
-
+    const swipeLeftBtn = document.querySelector('button.button.is-pulled-left');
+    swipeLeftBtn.addEventListener("click", () => {
+        console.log("clicked left");
+        updateCurAnimal(animalData[++curAnimalIndex], animalData);
+    });
+}    
 
 
