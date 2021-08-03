@@ -1,9 +1,3 @@
-GENERATE OAUTH TOKEN:
-curl -d "grant_type=client_credentials&client_id={API_KEY}client_secret={SECRET}" https://api.petfinder.com/v2/oauth2/token
-
-Axios CDN: 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
 Start Emulators:
 firebase emulators:start --only hosting
 
