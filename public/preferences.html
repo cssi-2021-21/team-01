@@ -5,6 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Petlify</title>
+
+    <script defer src="/__/firebase/8.8.1/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/8.8.1/firebase-auth.js"></script>
+    <script defer src="/__/firebase/8.8.1/firebase-database.js"></script>
+    <script defer src="/__/firebase/8.8.1/firebase-firestore.js"></script>
+    <script defer src="/__/firebase/8.8.1/firebase-functions.js"></script>
+    <script defer src="/__/firebase/8.8.1/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/8.8.1/firebase-storage.js"></script>
+    <script defer src="/__/firebase/8.8.1/firebase-analytics.js"></script>
+    <script defer src="/__/firebase/8.8.1/firebase-remote-config.js"></script>
+    <script defer src="/__/firebase/8.8.1/firebase-performance.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
     <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
     <link rel="stylesheet" href="css/preferences.css" />
 </head>
@@ -21,6 +39,6 @@
         </div>
     </div>
 
-    <script src="js/preferences.js"></script>
+    <script defer src="js/preferences.js"></script>
 </body>
 </html>
