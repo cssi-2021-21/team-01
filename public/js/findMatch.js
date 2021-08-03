@@ -33,30 +33,46 @@ async function getData() {
       <div class="columns is-centered">
         <div class="column is-one-third">
           <div class="card">
-              <div class="card-image">
-                  <figure class="image">
-                  ${animal.primary_photo_cropped ? `<img src='${animal.primary_photo_cropped.large}'/>` : 'No image available'} 
-                  </figure>
+            <div class="card-image">
+              <figure class="image">
+                <img src='${animal.primary_photo_cropped ? animal.primary_photo_cropped.large : '../assets/dog-placeholder.png'}'/>
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-content">
+                  <p class="title is-4">${animal.name || '' }</p>
+                  ${animal.breeds.primary || ''}</p>
+                  <p>${animal.age || ''}  ${animal.gender || ''}</p>
+                  <p>Size as Adult: ${animal.size || ''}</p>
+                </div>
               </div>
-              <div class="card-content">
-                  <div class="media">
-                  <div class="media-content">
-                      <p class="title is-4">${animal.name}</p>
-                      <p class="is-6">${animal.gender}</p>
-                      <p class="is-6">${animal.breeds.primary}</p>
-                      <p class="subtitle is-6">${animal.age}</p>
-                  </div>
-                  </div>
-                  <div class="content">
+                <div class="content">
                   ${animal.description ? animal.description : 'No description available'}
-                  </div>
-              </div>
+                </div>
+                  ${animal.tags ? animal.tags.map(tag => makeTag(tag)) : ''}
+                <div class="mt-4">
+                  <button class="button is-pulled-left is-danger">
+                    Left
+                  </button>
+                  <button class="button is-pulled-right is-info">
+                    Right
+                  </button>
+                </div>
+            </div>
           </div>
+        </div>
       </div>`
   } catch (err) {
     console.log(err);
   }
 }
 
+const makeTag = (tag) => {
+  return `<span class="tag is-success is-light">${tag}</span>`
+}
+
 getData()
+
+
 
