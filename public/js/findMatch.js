@@ -61,17 +61,11 @@ async function getData() {
   try {
     // load preference first
     const preference = await loadPreference();
-    if (!preference) {
-        throw new Error("no preference");
-    }
     // API request using preference 
     const {data} = await axios.get(`https://api.petfinder.com/v2/animals?type=${preference}`, config);
     return data.animals;
   } catch (err) {
     console.log(err);
-    if (err === "no preference") {
-        window.location = "preferences.html";
-    }
   }
 }
 
