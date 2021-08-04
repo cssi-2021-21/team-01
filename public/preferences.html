@@ -24,65 +24,84 @@
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
     <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
-    <link rel="stylesheet" href="css/preferences.css" />
 </head>
 <body>
-    <!-- NAVBAR -->
-    <nav class="navbar is-black" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-          <a class="navbar-item has-text-white is-size-4 has-text-weight-bold" href="index.html">
-            Petlify.
-          </a>
-        
-          <a class="navbar-item ml-1" href="index.html">
-            Home
-          </a>
-          <a class="navbar-item" href="about.html">
-            About
-          </a>
-          <a class="navbar-item" href="explore.html">
-            Explore
-          </a>
-          <a class="navbar-item" href="matches.html">
-            Matches
-          </a>
+   <!-- NAVBAR -->
+   <nav class="navbar is-black" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item has-text-white is-size-4 has-text-weight-bold" href="index.html">
+        Petlify.
+      </a>
+    
+      <a class="navbar-item ml-1" href="index.html">
+        Home
+      </a>
+      <a class="navbar-item" href="about.html">
+        About
+      </a>
+      <a class="navbar-item" href="explore.html">
+        Explore
+      </a>
+      <a class="navbar-item" href="matches.html">
+        Matches
+      </a>
+  
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  
+    <div id="navbarBasicExample" class="navbar-menu">
+    </div>
+  </nav>
+    <section class="section">
+      <div class="columns">
+        <div class="column is-half">
+
+          <!-- <div class="field">
+            <label class="label">Name</label>
+            <div class="control">
+              <input class="input" id="userName" type="text" placeholder="What's your name?">
+            </div>
+          </div> -->
       
-          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-      
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-end mr-3">
-              <div class="navbar-item">
-                <div class="buttons">
-                  <a id="loginBtn" class="button is-info">
-                    <strong>Log in</strong>
-                  </a>
+          <div class="field">
+            <label class="label">Animal Preference</label>
+            <div class="control">
+              <div class="select" >
+                <select id="species">
+                  <option>Dog</option>
+                  <option>Cat</option>
+                </select>
               </div>
             </div>
           </div>
-        </div>
-      </nav>
-    
-    <section class="hero background-img">
-        <div class="hero-body">
-            <div id="preferenceLabel" class="container has-text-centered">
-                <h1 class="title is-size-1 has-text-white">Choose your preference.</h1>
-            </div>
-        </div>
-    </section>
+      
 
-    <div class="flex is-vcentered">
-        <div class="flex-item">
-            <button type="button" value="dog" class="button">Dogs</button>
+      
+          <!-- <div class="field">
+            <div class="control">
+              <label class="checkbox">
+                <input type="checkbox">
+                I agree to the <a href="#">terms and conditions</a>
+              </label>
+            </div>
+          </div> -->
+      
+      
+          <div class="field is-grouped">
+            <div class="control">
+              <button onclick="onSubmit()" class="button is-link">Submit</button>
+            </div>
+            <!-- <div class="control">
+              <button class="button is-link is-light">Cancel</button>
+            </div> -->
+          </div>
         </div>
-        <div class="flex-item">
-            <button type="button" value="cat" class="button">Cats</button>
-        </div>
-    </div>
+      </div>
+    </section>
 
     <script defer src="js/preferences.js"></script>
 </body>
