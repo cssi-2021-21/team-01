@@ -6,18 +6,15 @@ window.onload = (event) => {
   // Use this to retain user state between html pages.
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        console.log(user.uid)
-        console.log('Logged in as:', user.displayName );
-        googleUserId = user.uid;
+        console.log('Logged in as:', user.displayName, ' with ID ', user.uid );
+        googleUserId = user.uid
     } else {
       // If not logged in, navigate back to login page.
       window.location = 'index.html';
     };
   });
-};
 
-console.log(googleUserId);
-
+  
 let content = document.querySelector('#content')
 
 const getAuthToken = async () => {
@@ -157,5 +154,4 @@ const updateCurAnimal = (animal, animalData) => {
         }
     });
 }    
-
-
+};
