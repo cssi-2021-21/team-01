@@ -9,11 +9,13 @@ const signIn = () => {
 
         // The signed-in user info.
         var user = result.user;
+        firebase.database().ref(`/users/${user.uid}`).push({name: `${result.additionalUserInfo.profile.name}`});
+
+    })
+    .then(() => {
         window.location = 'preferences.html';
-
-        // Create database save for user
-
-    }).catch((error) => {
+    })  
+    .catch((error) => {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
