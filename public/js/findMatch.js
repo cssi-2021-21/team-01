@@ -118,7 +118,7 @@ const updateCurAnimal = (animal, animalData) => {
 
     const swipeRightBtn = document.querySelector('button.button.is-pulled-right');
     swipeRightBtn.addEventListener("click", () => {
-        firebase.database().ref(`users/${googleUserId}/matches`).push(animalData[curAnimalIndex].id);
+        firebase.database().ref(`users/${googleUserId}/matches`).push(animalData[curAnimalIndex]);
         if (++curAnimalIndex >= animalData.length) {
             console.log("new API request");
             // New API call and index reset
