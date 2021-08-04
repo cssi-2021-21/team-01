@@ -36,12 +36,13 @@ const loadPreference = () => {
         if (preferenceRef) {
             preferenceRef.on('value', (snapshot) => {
                 const preference = snapshot.val();
-                console.log("FIREBASE PREFERENCE:", preference);
+                if (!preference) {
+                    reject("no preference set");
+                    // Redirect to preference page if not set
+                    window.location = "preferences.html";
+                }
                 resolve(preference);
             });
-        }
-        else {
-            reject(err);
         }
     });
 }

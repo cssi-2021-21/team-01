@@ -6,7 +6,6 @@ window.onload = (event) => {
     if (user) {
       console.log('Logged in as:', user.displayName);
       googleUserId = user.uid;
-      firebase.database().ref(`/users/${googleUserId}/preferences`).push({preference: null});
     } else {
       // If not logged in, navigate back to login page.
       window.location = 'index.html';
