@@ -15,7 +15,7 @@ window.onload = (event) => {
   });
 };
 
-const content = document.querySelector('#content')
+const content = document.querySelector('#content');
 
 const getAuthToken = async () => {
   const res = await axios.request({
@@ -32,15 +32,17 @@ const getAuthToken = async () => {
 
 const loadPreference = () => {
     return new Promise((resolve, reject) => {
-        const preferenceRef = firebase.database().ref(`users/${googleUserId}/preferences/preference`);
+        const preferenceRef = firebase.database().ref(`users/${googleUserId}/preferences/preference`);        
         if (preferenceRef) {
             preferenceRef.on('value', (snapshot) => {
                 const preference = snapshot.val();
+                if (!preference) {
+                    reject("no preference set");
+                    // Redirect to preference page if not set
+                    window.location = "preferences.html";
+                }
                 resolve(preference);
             });
-        }
-        else {
-            reject(err);
         }
     });
 }
@@ -57,17 +59,11 @@ async function getData() {
   try {
     // load preference first
     const preference = await loadPreference();
-    if (!preference) {
-        throw new Error("no preference");
-    }
     // API request using preference 
     const {data} = await axios.get(`https://api.petfinder.com/v2/animals?type=${preference}`, config);
     return data.animals;
   } catch (err) {
     console.log(err);
-    if (err === "no preference") {
-        window.location = "preferences.html";
-    }
   }
 }
 
@@ -86,7 +82,7 @@ getData()
 
 const updateCurAnimal = (animal, animalData) => {
     content.innerHTML = `
-      <div class="columns is-centered">
+      <div class="columns is-centered animate__animated animate__backInLeft">
         <div class="column is-one-third">
           <div class="card">
             <div class="card-image">
@@ -122,7 +118,7 @@ const updateCurAnimal = (animal, animalData) => {
 
     const swipeRightBtn = document.querySelector('button.button.is-pulled-right');
     swipeRightBtn.addEventListener("click", () => {
-        firebase.database().ref(`users/${googleUserId}/matches`).push(animalData[curAnimalIndex].id);
+        firebase.database().ref(`users/${googleUserId}/matches`).push(animalData[curAnimalIndex]);
         if (++curAnimalIndex >= animalData.length) {
             console.log("new API request");
             // New API call and index reset
