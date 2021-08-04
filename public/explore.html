@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Petlify</title>
   <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
   <script defer src="/__/firebase/8.8.1/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
     <script defer src="/__/firebase/8.8.1/firebase-auth.js"></script>
@@ -55,8 +59,8 @@
         <div class="navbar-end mr-3">
           <div class="navbar-item">
             <div class="buttons">
-              <a id="loginBtn" class="button is-info">
-                <strong>Log in</strong>
+              <a onclick="signIn()" class="button is-info" href="preferences.html">
+                <strong>Preferences</strong>
               </a>
           </div>
         </div>

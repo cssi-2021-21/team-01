@@ -23,6 +23,7 @@
       to avoid connecting the SDK to running emulators.
     -->
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <script defer src="js/signIn.js"></script>
 </head>
 <body>
  <!-- NAVBAR -->
@@ -56,7 +57,7 @@
       <div class="navbar-end mr-3">
         <div class="navbar-item">
           <div class="buttons">
-            <a id="loginBtn" class="button is-info">
+            <a onclick="signIn()" class="button is-info">
               <strong>Log in</strong>
             </a>
         </div>
@@ -68,7 +69,7 @@
 <div class="content">
     <div class="block">
         <h1 class="has-text-white">
-            What is Petify
+            What is Petlify?
         </h1>
     </div>
     <div class="block">

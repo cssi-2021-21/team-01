@@ -6,7 +6,8 @@ window.onload = (event) => {
   // Use this to retain user state between html pages.
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        console.log('Logged in as:', user.displayName);
+        console.log(user.uid)
+        console.log('Logged in as:', user.displayName );
         googleUserId = user.uid;
     } else {
       // If not logged in, navigate back to login page.
@@ -15,7 +16,9 @@ window.onload = (event) => {
   });
 };
 
-const content = document.querySelector('#content')
+console.log(googleUserId);
+
+let content = document.querySelector('#content')
 
 const getAuthToken = async () => {
   const res = await axios.request({
@@ -36,6 +39,7 @@ const loadPreference = () => {
         if (preferenceRef) {
             preferenceRef.on('value', (snapshot) => {
                 const preference = snapshot.val();
+                console.log('user pref is', preference);
                 resolve(preference);
             });
         }
@@ -83,10 +87,10 @@ getData()
     .catch((err) => {
         console.log(err);
     })
-
+  
 const updateCurAnimal = (animal, animalData) => {
     content.innerHTML = `
-      <div class="columns is-centered">
+      <div class="animate__animated animate__backInLeft columns is-centered">
         <div class="column is-one-third">
           <div class="card">
             <div class="card-image">
