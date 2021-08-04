@@ -16,22 +16,7 @@ window.onload = (event) => {
 };
   
 const onSubmit = e => {
-  console.log('click')
   const species = document.querySelector('#species').value.toLowerCase()
-  console.log(species)
   firebase.database().ref(`/users/${googleUserId}/preferences`).update({preference: species})
+  alert('Preferences changed.')
 }
-// const dogBtn = document.querySelector('button[value="dog"]')
-// const catBtn = document.querySelector('button[value="cat"]')
-
-// dogBtn.addEventListener("click", () => {
-//     console.log("Dog Selected");
-//     firebase.database().ref(`/users/${googleUserId}/preferences`).update({preference: 'dog'});
-//     window.location = "explore.html";
-// });
-
-// catBtn.addEventListener("click", () => {
-//     console.log("Cat Selected");
-//     firebase.database().ref(`/users/${googleUserId}/preferences`).update({preference: 'cat'});
-//     window.location = "explore.html";
-// });

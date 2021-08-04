@@ -54,19 +54,21 @@
     </div>
   
     <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-end mr-3">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a onclick="signIn()" class="button is-info" href="preferences.html">
+              <strong>Preferences</strong>
+            </a>
+        </div>
+      </div>
+    </div>
     </div>
   </nav>
-    <section class="section">
-      <div class="columns">
+    <h1 class="title mt-4 ml-3">Your Preferences:</h1>
+    
+      <div class="columns ml-3">
         <div class="column is-half">
-
-          <!-- <div class="field">
-            <label class="label">Name</label>
-            <div class="control">
-              <input class="input" id="userName" type="text" placeholder="What's your name?">
-            </div>
-          </div> -->
-      
           <div class="field">
             <label class="label">Animal Preference</label>
             <div class="control">
@@ -95,13 +97,15 @@
             <div class="control">
               <button onclick="onSubmit()" class="button is-link">Submit</button>
             </div>
+            
             <!-- <div class="control">
               <button class="button is-link is-light">Cancel</button>
             </div> -->
           </div>
+          <div id="message"></div>
         </div>
       </div>
-    </section>
+
 
     <script defer src="js/preferences.js"></script>
 </body>
