@@ -55,7 +55,9 @@ async function getData() {
   };
 
   try {
+    // load preference first
     const preference = await loadPreference();
+    // API request using preference 
     const {data} = await axios.get(`https://api.petfinder.com/v2/animals?type=${preference}`, config)
     return data.animals;
   } catch (err) {
@@ -71,6 +73,9 @@ let curAnimalIndex = 0;
 getData()
     .then((animalData) => {
         updateCurAnimal(animalData[0], animalData);   
+    })
+    .catch((err) => {
+        console.log(err);
     })
 
 const updateCurAnimal = (animal, animalData) => {
@@ -112,12 +117,40 @@ const updateCurAnimal = (animal, animalData) => {
     const swipeRightBtn = document.querySelector('button.button.is-pulled-right');
     swipeRightBtn.addEventListener("click", () => {
         firebase.database().ref(`users/${googleUserId}/matches`).push(animalData[curAnimalIndex].id);
-        updateCurAnimal(animalData[++curAnimalIndex], animalData);
+        if (++curAnimalIndex >= animalData.length) {
+            console.log("new API request");
+            // New API call and index reset
+            curAnimalIndex = 0;
+            getData()
+                .then((animalData) => {
+                    updateCurAnimal(animalData[0], animalData);   
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
+        else {
+            updateCurAnimal(animalData[curAnimalIndex], animalData);
+        }
     });
 
     const swipeLeftBtn = document.querySelector('button.button.is-pulled-left');
     swipeLeftBtn.addEventListener("click", () => {
-        updateCurAnimal(animalData[++curAnimalIndex], animalData);
+        if (++curAnimalIndex >= animalData.length) {
+            console.log("new API request");
+            // New API call and index reset
+            curAnimalIndex = 0;
+            getData()
+                .then((animalData) => {
+                    updateCurAnimal(animalData[0], animalData);   
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
+        else {
+            updateCurAnimal(animalData[curAnimalIndex], animalData);
+        }
     });
 }    
 
