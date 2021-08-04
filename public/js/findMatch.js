@@ -6,16 +6,16 @@ window.onload = (event) => {
   // Use this to retain user state between html pages.
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        console.log('Logged in as:', user.displayName, ' with ID ', user.uid );
-        googleUserId = user.uid
+        console.log('Logged in as:', user.displayName);
+        googleUserId = user.uid;
     } else {
       // If not logged in, navigate back to login page.
       window.location = 'index.html';
     };
   });
+};
 
-  
-let content = document.querySelector('#content')
+const content = document.querySelector('#content');
 
 const getAuthToken = async () => {
   const res = await axios.request({
@@ -33,12 +33,15 @@ const getAuthToken = async () => {
 const loadPreference = () => {
     return new Promise((resolve, reject) => {
         const preferenceRef = firebase.database().ref(`users/${googleUserId}/preferences/preference`);        
+        if (preferenceRef) {
             preferenceRef.on('value', (snapshot) => {
                 const preference = snapshot.val();
-                console.log('user pref is', preference);
+                console.log("FIREBASE PREFERENCE:", preference);
                 resolve(preference);
             });
-            reject();
+        }
+        else {
+            reject(err);
         }
     });
 }
@@ -75,10 +78,10 @@ getData()
     .catch((err) => {
         console.log(err);
     })
-  
+
 const updateCurAnimal = (animal, animalData) => {
     content.innerHTML = `
-      <div class="animate__animated animate__backInLeft columns is-centered">
+      <div class="columns is-centered">
         <div class="column is-one-third">
           <div class="card">
             <div class="card-image">
@@ -151,4 +154,5 @@ const updateCurAnimal = (animal, animalData) => {
         }
     });
 }    
-};
+
+
