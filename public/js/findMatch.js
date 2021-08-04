@@ -1,13 +1,13 @@
 import {API_KEY, SECRET} from './secrets.js'
 
 let googleUserId;
-
+let preference = null;
 window.onload = (event) => {
   // Use this to retain user state between html pages.
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-      console.log('Logged in as:', user.displayName);
-      googleUserId = user.uid;
+        console.log('Logged in as:', user.displayName);
+        googleUserId = user.uid;
     } else {
       // If not logged in, navigate back to login page.
       window.location = 'index.html';
@@ -30,6 +30,21 @@ const getAuthToken = async () => {
   return res.data.access_token
 }
 
+const loadPreference = () => {
+    return new Promise((resolve, reject) => {
+        const preferenceRef = firebase.database().ref(`users/${googleUserId}/preferences/preference`);
+        if (preferenceRef) {
+            preferenceRef.on('value', (snapshot) => {
+            const preference = snapshot.val();
+            resolve(preference);
+            });
+        }
+        else {
+            reject(err);
+        }
+    });
+}
+
 async function getData() {
   const OAUTH_TOKEN = await getAuthToken()
   const config = {
@@ -40,7 +55,8 @@ async function getData() {
   };
 
   try {
-    const {data} = await axios.get('https://api.petfinder.com/v2/animals?type=dog', config)
+    const preference = await loadPreference();
+    const {data} = await axios.get(`https://api.petfinder.com/v2/animals?type=${preference}`, config)
     return data.animals;
   } catch (err) {
     console.log(err);
