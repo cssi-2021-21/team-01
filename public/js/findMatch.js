@@ -32,15 +32,13 @@ const getAuthToken = async () => {
 
 const loadPreference = () => {
     return new Promise((resolve, reject) => {
-        const preferenceRef = firebase.database().ref(`users/${googleUserId}/preferences/preference`);
-        if (preferenceRef) {
+        const preferenceRef = firebase.database().ref(`users/${googleUserId}/preferences/preference`);        
             preferenceRef.on('value', (snapshot) => {
                 const preference = snapshot.val();
+                console.log("FIREBASE PREFERENCE:", preference);
                 resolve(preference);
             });
-        }
-        else {
-            reject(err);
+            reject();
         }
     });
 }
