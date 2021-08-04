@@ -1,8 +1,3 @@
-const loginBtn = document.getElementById('loginBtn');
-loginBtn.addEventListener('click', () => {
-    signIn();
-})
-
 const signIn = () => {
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth()
