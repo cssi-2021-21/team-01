@@ -1,4 +1,4 @@
-let googleUserId
+let googleUserId;
 
 window.onload = (event) => {
   // Use this to retain user state between html pages.
@@ -6,12 +6,35 @@ window.onload = (event) => {
     if (user) {
       console.log('Logged in as: ' + user.displayName);
       googleUserId = user.uid;
+    //   getCards(googleUserId);
     } else {
       // If not logged in, navigate back to login page.
       window.location = 'index.html';
     };
   });
 };
+
+// const getCards = (userId) => {
+//     const matchRef = firebase.database().ref(`users/${userId}`);
+//     matchRef.on("value", (snapshot) => {
+//         const data = snapshot.val();
+//         renderDataAsHTML(data);
+//     })
+// }
+
+// const renderDataAsHTML = (data) => {
+//     let cards = ``;
+//     for (const matchItem in data) {
+//         const match = data[matchItem];
+//         // For each match create a card
+//         cards += createCard(match);
+//     };
+//     document.querySelector("#cards").innerHTML = cards;
+// }
+
+// const createCard = (match) => {
+//     return ``
+// }
 
 const cards = document.querySelector("#cards");
 
