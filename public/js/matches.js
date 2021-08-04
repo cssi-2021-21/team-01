@@ -33,29 +33,30 @@ const renderDataAsHTML = (data) => {
 }
 
 const createCard = (animal) => {
-    return `<div class="column is-one-quarter">
-          <div class="card">
-            <div class="card-image">
-              <figure class="image">
-                <img src='${animal.primary_photo_cropped ? animal.primary_photo_cropped.large : '../assets/dog-placeholder.png'}'/>
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <p class="title is-4">${animal.name || '' }</p>
-                  ${animal.breeds.primary || ''}</p>
-                  <p>${animal.age || ''}  ${animal.gender || ''}</p>
-                  <p>Size as Adult: ${animal.size || ''}</p>
-                </div>
-              </div>
-                <div class="content">
-                  ${animal.description ? animal.description : 'No description available'}
-                </div>
-                  ${animal.tags ? animal.tags.map(tag => makeTag(tag)) : ''}
-            </div>
+    return `
+    <div class="column is-one-fifth">
+    <div class="card">
+      <div class="card-image">
+        <figure class="image">
+          <img src='${animal.primary_photo_cropped ? animal.primary_photo_cropped.large : `../assets/${animal.species.toLowerCase()}-placeholder.png`}'/>
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-4">${animal.name || '' }</p>
+            ${animal.breeds.primary || ''}</p>
+            <p>${animal.age || ''}  ${animal.gender || ''}</p>
+            <p>Size as Adult: ${animal.size || ''}</p>
           </div>
-        </div>`
+        </div>
+          <div class="content">
+            ${animal.description ? animal.description : 'No description available'}
+          </div>
+            ${animal.tags ? animal.tags.map(tag => makeTag(tag)) : ''}
+      </div>
+    </div>
+  </div>`
 }
 
 const makeTag = (tag) => {
