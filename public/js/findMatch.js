@@ -35,8 +35,8 @@ const loadPreference = () => {
         const preferenceRef = firebase.database().ref(`users/${googleUserId}/preferences/preference`);
         if (preferenceRef) {
             preferenceRef.on('value', (snapshot) => {
-            const preference = snapshot.val();
-            resolve(preference);
+                const preference = snapshot.val();
+                resolve(preference);
             });
         }
         else {
@@ -57,11 +57,17 @@ async function getData() {
   try {
     // load preference first
     const preference = await loadPreference();
+    if (!preference) {
+        throw new Error("no preference");
+    }
     // API request using preference 
-    const {data} = await axios.get(`https://api.petfinder.com/v2/animals?type=${preference}`, config)
+    const {data} = await axios.get(`https://api.petfinder.com/v2/animals?type=${preference}`, config);
     return data.animals;
   } catch (err) {
     console.log(err);
+    if (err === "no preference") {
+        window.location = "preferences.html";
+    }
   }
 }
 
