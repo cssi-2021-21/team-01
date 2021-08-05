@@ -17,6 +17,6 @@ window.onload = (event) => {
   
 const onSubmit = e => {
   const species = document.querySelector('#species').value.toLowerCase()
-  firebase.database().ref(`/users/${googleUserId}/preferences`).update({preference: species})
+  firebase.database().ref(`/users/${googleUserId}`).update({preference: species})
   alert('Preferences changed.')
 }
