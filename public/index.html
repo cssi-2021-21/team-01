@@ -31,39 +31,37 @@
   </head>
   <body class="gradient">
     <!-- NAVBAR -->
-    <nav class="navbar is-white" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item has-text-white is-size-4 has-text-weight-bold" href="index.html">
-          Petlify.
-        </a>
-      
-        <a class="navbar-item ml-1" href="index.html">
-          Home
-        </a>
-        <a class="navbar-item" href="about.html">
-          About
-        </a>
+  <nav class="navbar is-white petlifyNavbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item has-text-black is-size-4 has-text-weight-bold" href="index.html">
+        Petlify.
+      </a>
     
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-    
-      <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="buttons">
-                <a onclick="signIn()" class="button is-info">
-                  <strong>Log in</strong>
-                </a>
-            </div>
-          </div>
-          
+      <a class="navbar-item ml-1" href="index.html">
+        Home
+      </a>
+      <a class="navbar-item" href="about.html">
+        About
+      </a>
+     
+  
+      <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  
+    <div id="navMenu" class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item">
+              <a onclick="signIn()" class="has-text-black">
+                Log In
+              </a>
         </div>
       </div>
-    </nav>
+    </div>
+  </nav>
 
     <section class="hero background-img is-large">
       <!-- Hero content: will be in the middle -->
@@ -77,6 +75,7 @@
       </div>
     </section>
     
+    <script src="./js/navBar.js"></script>
 
   </body>
 </html>
