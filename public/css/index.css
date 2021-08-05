@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap');
+
 html, body {
     background-color: #363636;
+    font-family: 'Poppins', sans-serif;
+}
+
+.landing {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.35)), url('../assets/landing.jpg');
+    background-size: cover;
+}
+
+nav {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.35)),
 }
