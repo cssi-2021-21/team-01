@@ -2,4 +2,4 @@ Start Emulators:
 firebase emulators:start --only hosting
 
 GIT CLI shortcuts
-git add --all && git commit -m "Customize navbar dark" && git push
+git commit -a -m "Add initial preference animation" && git push
