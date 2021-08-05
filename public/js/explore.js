@@ -45,6 +45,23 @@ const loadPreference = () => {
         });
     });
 }
+const getOnlyPictures = (data) => {
+    return new Promise((resolve, reject) => {
+        const onlyPicturesRef = firebase.database().ref(`users/${googleUserId}/onlyPictures`);        
+        onlyPicturesRef.on('value', (snapshot) => {
+            const onlyPictures = snapshot.val();
+            console.log(onlyPictures);
+            if (onlyPictures === "no") {
+                resolve(data.animals);
+            }
+            else if (onlyPictures === "yes") {
+                const filteredAnimals = data.animals.filter(animal => animal.primary_photo_cropped);
+                resolve(filteredAnimals);
+            }
+            reject("NO PHOTO OPTION SET");
+        });
+    });
+}
 
 let userPref = ''
 
@@ -63,7 +80,10 @@ async function getData() {
     userPref = preference;
     // API request using preference 
     const {data} = await axios.get(`https://api.petfinder.com/v2/animals?type=${preference}`, config);
-    return data.animals;
+    // Filter by picture
+    const animalData = await getOnlyPictures(data); 
+    console.log(animalData);
+    return animalData;
   } catch (err) {
     console.log(err);
   }

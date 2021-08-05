@@ -18,6 +18,7 @@ const dogBtn = document.querySelector('button[value="dog"]');
 dogBtn.addEventListener("click", async function() {
     console.log('Dog Selected');
     await firebase.database().ref(`users/${googleUserId}`).update({preference: this.value});
+    await firebase.database().ref(`users/${googleUserId}`).update({onlyPictures: "no"});
     window.location = "explore.html";
 });
 
@@ -25,5 +26,6 @@ const catBtn = document.querySelector('button[value="cat"]');
 catBtn.addEventListener("click", async function() {
     console.log('Cat Selected');
     await firebase.database().ref(`users/${googleUserId}`).update({preference: this.value});
+    await firebase.database().ref(`users/${googleUserId}`).update({onlyPictures: "no"});
     window.location = "explore.html";
 });

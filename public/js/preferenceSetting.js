@@ -16,8 +16,8 @@ window.onload = (event) => {
 };
   
 const onSubmit = e => {
-  const species = document.getElementById('species').value.toLowerCase()
-  const onlyPictures = document.getElementById('onlyPictures').value.toLowerCase()
+  const species = document.getElementById('species').value.toLowerCase();
+  const onlyPictures = document.getElementById('onlyPictures').value.toLowerCase();
   firebase.database().ref(`/users/${googleUserId}`).update({preference: species})
   firebase.database().ref(`/users/${googleUserId}`).update({onlyPictures: onlyPictures})
   alert('Preferences changed.')
