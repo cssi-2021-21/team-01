@@ -2,4 +2,4 @@ Start Emulators:
 firebase emulators:start --only hosting
 
 GIT CLI shortcuts
-git commit -a -m "Redesign navbar" && git push
+git commit -a -m "Changes" && git push

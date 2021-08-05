@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap');
 
 html, body {
-    background-color: #363636;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);  
     font-family: 'Poppins', sans-serif;
+}
+
+.petlifyNavbar {
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
