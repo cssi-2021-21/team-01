@@ -2,19 +2,19 @@ const signIn = () => {
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth()
     .signInWithPopup(provider)
-    .then((result) => {
+    .then(async (result) => {
         /** @type {firebase.auth.OAuthCredential} */
         var credential = result.credential;
         var token = credential.accessToken;
 
         // The signed-in user info.
         var user = result.user;
-        firebase.database().ref(`/users/${user.uid}`).push({name: `${result.additionalUserInfo.profile.name}`});
+        await firebase.database().ref(`/users/${user.uid}`).push({name: `${result.additionalUserInfo.profile.name}`});
         console.log(result.additionalUserInfo.profile.name);        
 
     })
     .then(() => {
-        window.location = 'preferences.html';
+        window.location = 'preferenceInitial.html';
     })  
     .catch((error) => {
     // Handle Errors here.
