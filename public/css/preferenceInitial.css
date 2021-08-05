@@ -1,7 +1,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    background-image: linear-gradient(to right, #9051fc, #ff6eaa);
+    background-image: linear-gradient(to right, #004d1c, #006e8a);
 }
 
 .center {
@@ -30,7 +30,7 @@ h1 {
   margin-left: 10px;
 }
 
-.button {
+.animalButton {
   margin-top: 15px;
   background-color: #0066FF;
   border: none;
