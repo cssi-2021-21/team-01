@@ -37,9 +37,10 @@ const loadPreference = () => {
             const preference = snapshot.val();
             console.log(preference);
             if (!preference) {
-                reject("no preference set");
                 // Redirect to preference page if not set
+                console.log("redirecting");
                 window.location = "preferenceSetting.html";
+                reject("no preference set");
             }
             resolve(preference);
         });
@@ -60,7 +61,7 @@ async function getData() {
   try {
     // load preference first
     const preference = await loadPreference();
-    userPref = preference
+    userPref = preference;
     // API request using preference 
     const {data} = await axios.get(`https://api.petfinder.com/v2/animals?type=${preference}`, config);
     return data.animals;
