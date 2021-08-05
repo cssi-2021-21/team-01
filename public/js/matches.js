@@ -27,12 +27,16 @@ const renderDataAsHTML = (data) => {
     for (const matchItem in data) {
         const match = data[matchItem];
         // For each match create a card
-        cards += createCard(match);
+        cards += createCard(match, matchItem);
     };
     document.querySelector("#cards").innerHTML = cards;
 }
 
-const createCard = (animal) => {
+function deleteAnimal(animalId) {
+    firebase.database().ref(`users/${googleUserId}/matches/${animalId}`).remove();
+}
+
+const createCard = (animal, animalId) => {
     return `
     <div class="column is-one-fifth">
     <div class="card">
@@ -55,6 +59,11 @@ const createCard = (animal) => {
           </div>
             ${animal.tags ? animal.tags.map(tag => makeTag(tag)) : ''}
       </div>
+      <footer class="card-footer">
+        <a class="card-footer-item" onclick="deleteAnimal('${animalId}')">
+            Delete
+        </a>
+      </footer>
     </div>
   </div>`
 }
