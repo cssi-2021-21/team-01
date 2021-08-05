@@ -129,7 +129,7 @@ const updateCurAnimal = (animal, animalData) => {
                   <button class="button is-pulled-left is-danger">
                     Left
                   </button>
-                  <button class="button is-pulled-right is-info">
+                  <button class="button is-pulled-right is-success">
                     Right
                   </button>
                 </div>
