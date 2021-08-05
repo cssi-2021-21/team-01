@@ -13,7 +13,6 @@ window.onload = (event) => {
       window.location = 'index.html';
     };
   });
-};
 
 const content = document.querySelector('#content');
 
@@ -157,5 +156,6 @@ const updateCurAnimal = (animal, animalData) => {
             updateCurAnimal(animalData[curAnimalIndex], animalData);
         }
     });
-}    
+}; // update curAnimal
 
+} // window.onload 
