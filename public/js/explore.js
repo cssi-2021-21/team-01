@@ -32,18 +32,17 @@ const getAuthToken = async () => {
 
 const loadPreference = () => {
     return new Promise((resolve, reject) => {
-        const preferenceRef = firebase.database().ref(`users/${googleUserId}/preferences/preference`);        
-        if (preferenceRef) {
-            preferenceRef.on('value', (snapshot) => {
-                const preference = snapshot.val();
-                if (!preference) {
-                    reject("no preference set");
-                    // Redirect to preference page if not set
-                    window.location = "preferences.html";
-                }
-                resolve(preference);
-            });
-        }
+        const preferenceRef = firebase.database().ref(`users/${googleUserId}/preference`);        
+        preferenceRef.on('value', (snapshot) => {
+            const preference = snapshot.val();
+            console.log(preference);
+            if (!preference) {
+                reject("no preference set");
+                // Redirect to preference page if not set
+                window.location = "preferenceSetting.html";
+            }
+            resolve(preference);
+        });
     });
 }
 
