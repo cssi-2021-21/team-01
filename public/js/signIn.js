@@ -9,7 +9,7 @@ const signIn = () => {
 
         // The signed-in user info.
         var user = result.user;
-        await firebase.database().ref(`/users/${user.uid}`).push({name: `${result.additionalUserInfo.profile.name}`});
+        await firebase.database().ref(`/users/${user.uid}`).update({name: `${result.additionalUserInfo.profile.name}`});
         console.log(result.additionalUserInfo.profile.name);        
 
     })
