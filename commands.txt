@@ -2,4 +2,4 @@ Start Emulators:
 firebase emulators:start --only hosting
 
 GIT CLI shortcuts
-git commit -a -m "Add landing image, change font" && git push
+git commit -a -m "Change explore Navbar to white, add gradient" && git push

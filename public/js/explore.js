@@ -85,7 +85,7 @@ getData()
 const updateCurAnimal = (animal, animalData) => {
     content.innerHTML = `
       <div class="columns is-centered animate__animated animate__backInLeft">
-        <div class="column is-one-third">
+        <div class="column is-one-quarter">
           <div class="card">
             <div class="card-image">
               <figure class="image">
