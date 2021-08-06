@@ -34,7 +34,6 @@ const loadPreference = () => {
         const preferenceRef = firebase.database().ref(`users/${googleUserId}/preference`);        
         preferenceRef.on('value', (snapshot) => {
             const preference = snapshot.val();
-            console.log(preference);
             if (!preference) {
                 // Redirect to preference page if not set
                 console.log("redirecting");
@@ -50,7 +49,6 @@ const getOnlyPictures = (data) => {
         const onlyPicturesRef = firebase.database().ref(`users/${googleUserId}/onlyPictures`);        
         onlyPicturesRef.on('value', (snapshot) => {
             const onlyPictures = snapshot.val();
-            console.log(onlyPictures);
             if (onlyPictures === "no") {
                 resolve(data.animals);
             }
@@ -82,7 +80,6 @@ async function getData() {
     const {data} = await axios.get(`https://api.petfinder.com/v2/animals?type=${preference}`, config);
     // Filter by picture
     const animalData = await getOnlyPictures(data); 
-    console.log(animalData);
     return animalData;
   } catch (err) {
     console.log(err);
@@ -142,7 +139,6 @@ const updateCurAnimal = (animal, animalData) => {
     swipeRightBtn.addEventListener("click", () => {
         firebase.database().ref(`users/${googleUserId}/matches`).push(animalData[curAnimalIndex]);
         if (++curAnimalIndex >= animalData.length) {
-            console.log("new API request");
             // New API call and index reset
             curAnimalIndex = 0;
             getData()
@@ -161,7 +157,6 @@ const updateCurAnimal = (animal, animalData) => {
     const swipeLeftBtn = document.querySelector('button.button.is-pulled-left');
     swipeLeftBtn.addEventListener("click", () => {
         if (++curAnimalIndex >= animalData.length) {
-            console.log("new API request");
             // New API call and index reset
             curAnimalIndex = 0;
             getData()

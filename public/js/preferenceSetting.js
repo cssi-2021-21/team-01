@@ -11,13 +11,15 @@ window.onload = (event) => {
       window.location = 'index.html';
     };
   });
-  
-
 };
-  
+
 const onSubmit = e => {
   const species = document.getElementById('species').value.toLowerCase();
   const onlyPictures = document.getElementById('onlyPictures').value.toLowerCase();
+  if(!species || !onlyPictures) {
+    alert('Please select an option for all your settings')
+    return
+  }
   firebase.database().ref(`/users/${googleUserId}`).update({preference: species})
   firebase.database().ref(`/users/${googleUserId}`).update({onlyPictures: onlyPictures})
   alert('Preferences changed.')
