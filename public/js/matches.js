@@ -24,11 +24,16 @@ const getCards = (userId) => {
 
 const renderDataAsHTML = (data) => {
     let cards = ``;
-    for (const matchItem in data) {
+    if(!data) {
+      cards = `<h1 class="title has-text-white">You have no matches at this time  :(</h1>`
+    } else {
+      for (const matchItem in data) {
         const match = data[matchItem];
         // For each match create a card
         cards += createCard(match, matchItem);
     };
+    }
+    
     document.querySelector("#cards").innerHTML = cards;
 }
 
@@ -77,7 +82,7 @@ const closeContactModal = () => {
 
 const createCard = (animal, animalId) => {
     return `
-    <div class="column is-one-fifth">
+    <div class="column is-one-fifth animate__animated animate__fadeInRight">
     <div class="card">
       <div class="card-image">
         <figure class="image">

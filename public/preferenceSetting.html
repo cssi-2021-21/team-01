@@ -31,7 +31,7 @@
   <nav class="navbar is-white petlifyNavbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item has-text-black is-size-4 has-text-weight-bold" href="index.html">
-        Petlify.
+        Petlify
       </a>
     
       <a class="navbar-item ml-1" href="index.html">
@@ -76,6 +76,7 @@
             <div class="control">
               <div class="select" >
                 <select id="species">
+                  <option disabled selected value> -- Select an option -- </option>
                   <option>Dog</option>
                   <option>Cat</option>
                 </select>
@@ -88,6 +89,7 @@
             <div class="control">
               <div class="select" >
                 <select id="onlyPictures">
+                  <option disabled selected value> -- Select an option -- </option>
                   <option>Yes</option>
                   <option>No</option>
                 </select>
@@ -109,7 +111,7 @@
       
           <div class="field is-grouped">
             <div class="control">
-              <button onclick="onSubmit()" class="button is-link">Submit</button>
+              <button id="submitButton" onclick="onSubmit()" class="button is-dark">Submit</button>
             </div>
             
             <!-- <div class="control">
