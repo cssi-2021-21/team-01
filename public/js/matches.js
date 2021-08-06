@@ -49,6 +49,9 @@ const formatAddress = (contactData) => {
         }
         addressText.textContent = addressLine;
     }
+    else {
+        addressText.textContent = "n/a";
+    }
 
     emailText.textContent = contactData.email ? contactData.email : "n/a";
     phoneNumberText.textContent = contactData.phone ? contactData.phone : "n/a";
